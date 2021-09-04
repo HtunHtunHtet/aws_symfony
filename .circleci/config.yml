@@ -44,6 +44,9 @@ jobs:
             - node-v1-
       - run: npm install
       - save_cache:
-          key: node-v1-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum "composer.json" }}-{{ checksum "package.json" }}
           paths:
-            - node_modules
+            - ./node_modules
+            - ./vendor
+      - store_artifacts:
+          path: artifacts
